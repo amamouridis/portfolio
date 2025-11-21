@@ -5,8 +5,16 @@
     <title>Portfolio – Angelos Mamouridis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+html {
+    scroll-behavior: smooth;
+}
 
 /* ---------- THEME VARIABLES ---------- */
+* {
+    transition: background-color .25s ease, 
+    color .25s ease, 
+    box-shadow .25s ease;
+}
 
 :root {
     --bg: #f6f7fb;
@@ -45,12 +53,16 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--bg);
-    padding: 14px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.1); /* light mode */
+    transition: .25s ease;
 }
+
+.dark header {
+    background: rgba(255,255,255,0.05); /* dark mode */
+    backdrop-filter: blur(12px);
+}
+
 
 .logo {
     font-weight: 700;
@@ -163,15 +175,19 @@ input:checked + .slider:before {
 
 .project-card {
     background-color: var(--card-bg);
-    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
     padding: 18px;
     box-shadow: var(--shadow);
     transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px) scale(1.015);
     box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+
+.dark .project-card:hover {
+    box-shadow: 0 16px 40px rgba(0,0,0,0.55);
 }
 
 .project-banner {
